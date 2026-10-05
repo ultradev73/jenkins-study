@@ -21,5 +21,12 @@ pipeline {
                 sh 'echo "빌드를 실행합니다"'
             }
         }
+
+        stage('Deploy Check') {
+            steps {
+                echo '=== Deploy Check Stage ==='
+                sh 'echo "배포 준비 상태를 확인합니다"'
+            }
+        }
     }
 }
