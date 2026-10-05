@@ -10,7 +10,7 @@ class CalculatorTest {
     void addTest() {
         Calculator calculator = new Calculator();
 
-        assertEquals(5, calculator.add(2, 3));
-	//assertEquals(10, calculator.add(2, 3));
+        //assertEquals(5, calculator.add(2, 3));
+	assertEquals(10, calculator.add(2, 3));
     }
 }
