@@ -24,11 +24,14 @@ pipeline {
             }
         }
 
-        stage('Artifact Check') {
-            steps {
-                echo '=== Artifact Check ==='
-                sh 'ls -lh build/libs/'
-            }
-        }
+	stage('Artifact Check') {
+	    steps {
+	        echo '=== Artifact Check ==='
+	        sh 'ls -lh build/libs/'
+
+	        archiveArtifacts artifacts: 'build/libs/*.jar',
+	                         fingerprint: true
+	    }
+	}
     }
 }
