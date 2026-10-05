@@ -14,9 +14,12 @@ pipeline {
             steps {
                 echo '=== Test Stage ==='
                 sh './gradlew test'
-
-		junit 'build/test-results/test/*.xml'
             }
+	    post {
+	        always {
+	            junit 'build/test-results/test/*.xml'
+	        }
+	    }
         }
 
         stage('Build') {
