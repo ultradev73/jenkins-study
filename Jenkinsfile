@@ -7,6 +7,18 @@ pipeline {
             choices: ['dev', 'stg', 'prd'],
             description: '배포 대상 환경'
         )
+
+	string(
+	    name: 'IMAGE_TAG',
+	    defaultValue: 'latest',
+	    description: 'Docker 이미지 태그'
+	)
+
+	booleanParam(
+	    name: 'RUN_TEST',
+	    defaultValue: true,
+	    description: '테스트 실행 여부'
+	)
     }
 
     environment {
@@ -36,6 +48,8 @@ pipeline {
 	        echo "WORKSPACE=${env.WORKSPACE}"
 
 		echo "DEPLOY_ENV=${params.DEPLOY_ENV}"
+		echo "IMAGE_TAG=${params.IMAGE_TAG}"
+		echo "RUN_TEST=${params.RUN_TEST}"
 	    }
 	}
 
