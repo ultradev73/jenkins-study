@@ -13,8 +13,19 @@ pipeline {
 	        sh 'java -version'
 	        sh './gradlew --version'
 
+	        // Linux Shell에서 해석
 	        sh 'echo "APP_NAME=$APP_NAME"'
 	        sh 'echo "APP_VERSION=$APP_VERSION"'
+
+	        // Jenkins Groovy에서 해석
+	        echo "Groovy APP_NAME=${env.APP_NAME}"
+	        echo "Groovy APP_VERSION=${env.APP_VERSION}"
+
+	        // Jenkins 내장 환경변수
+	        echo "BUILD_NUMBER=${env.BUILD_NUMBER}"
+	        echo "JOB_NAME=${env.JOB_NAME}"
+	        echo "BUILD_URL=${env.BUILD_URL}"
+	        echo "WORKSPACE=${env.WORKSPACE}"
 	    }
 	}
 
@@ -46,5 +57,5 @@ pipeline {
 	                         fingerprint: true
 	    }
 	}
-    }
+   }
 }
