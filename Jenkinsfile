@@ -1,6 +1,14 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(
+            name: 'DEPLOY_ENV',
+            choices: ['dev', 'stg', 'prd'],
+            description: '배포 대상 환경'
+        )
+    }
+
     environment {
         APP_NAME = 'jenkins-study'
         APP_VERSION = '1.0.0'
@@ -26,6 +34,8 @@ pipeline {
 	        echo "JOB_NAME=${env.JOB_NAME}"
 	        echo "BUILD_URL=${env.BUILD_URL}"
 	        echo "WORKSPACE=${env.WORKSPACE}"
+
+		echo "DEPLOY_ENV=${params.DEPLOY_ENV}"
 	    }
 	}
 
