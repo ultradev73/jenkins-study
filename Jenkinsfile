@@ -1,14 +1,22 @@
 pipeline {
     agent any
 
+    environment {
+        APP_NAME = 'jenkins-study'
+        APP_VERSION = '1.0.0'
+    }
+
     stages {
-        stage('Start') {
-            steps {
-                echo '=== Pipeline Start ==='
-                sh 'java -version'
-                sh './gradlew --version'
-            }
-        }
+	stage('Start') {
+	    steps {
+	        echo '=== Pipeline Start ==='
+	        sh 'java -version'
+	        sh './gradlew --version'
+
+	        sh 'echo "APP_NAME=$APP_NAME"'
+	        sh 'echo "APP_VERSION=$APP_VERSION"'
+	    }
+	}
 
         stage('Test') {
             steps {
