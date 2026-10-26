@@ -27,6 +27,26 @@ pipeline {
     }
 
     stages {
+
+	stage('Credentials Check') {
+	    steps {
+	        echo '=== Credentials Check ==='
+
+	        withCredentials([
+	            string(credentialsId: 'study-secret', variable: 'MY_SECRET')
+	        ]) {
+	            sh '''
+	                if [ -n "$MY_SECRET" ]; then
+	                    echo "Credentials loaded successfully"
+	                else
+	                    echo "Credentials not found"
+	                    exit 1
+	                fi
+	            '''
+	        }
+	    }
+	}
+
 	stage('Start') {
 	    steps {
 	        echo '=== Pipeline Start ==='
