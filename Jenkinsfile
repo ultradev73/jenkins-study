@@ -92,7 +92,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo '=== Build Stage ==='
-                sh './gradlew build'
+	        script {
+	            if (params.RUN_TEST) {
+	                sh './gradlew build'
+	            } else {
+	                sh './gradlew build -x test'
+	            }
+	        }
             }
         }
 
