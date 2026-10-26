@@ -111,5 +111,24 @@ pipeline {
 	                         fingerprint: true
 	    }
 	}
-   }
+    }
+
+    post {
+        always {
+            echo '=== Pipeline Finished ==='
+        }
+
+        success {
+            echo '=== Pipeline SUCCESS ==='
+        }
+
+        failure {
+            echo '=== Pipeline FAILURE ==='
+        }
+
+        cleanup {
+            echo '=== Pipeline Cleanup ==='
+        }
+    }
+
 }
