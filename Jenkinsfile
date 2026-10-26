@@ -70,6 +70,8 @@ pipeline {
 		echo "DEPLOY_ENV=${params.DEPLOY_ENV}"
 		echo "IMAGE_TAG=${params.IMAGE_TAG}"
 		echo "RUN_TEST=${params.RUN_TEST}"
+
+		error 'Intentional failure for post test'
 	    }
 	}
 
