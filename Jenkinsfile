@@ -74,6 +74,10 @@ pipeline {
 	}
 
         stage('Test') {
+	    when {
+		expression { params.RUN_TEST }
+	    }
+
             steps {
                 echo '=== Test Stage ==='
                 sh './gradlew test'
